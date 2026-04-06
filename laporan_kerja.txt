@@ -1,0 +1,9 @@
+Ben masukkan ke rencana kerja
+
+Konekkan sepedamurah dengan web bpkad 
+Spm yang telah di verifikasi yg sdh jd sp2d.
+Fortmanya 
+
+No | Nama SKPD | Uraian Keperluarn | Nominal | Tujuan Transfer|
+
+utk tujuan transfer nnti set lagi nambah inputan di sepedamurah
