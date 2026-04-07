@@ -11,7 +11,7 @@
  Target Server Version : 100428 (10.4.28-MariaDB)
  File Encoding         : 65001
 
- Date: 25/02/2026 12:37:27
+ Date: 06/04/2026 23:56:48
 */
 
 SET NAMES utf8mb4;
@@ -326,7 +326,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -371,6 +371,37 @@ INSERT INTO `migrations` VALUES (37, '2024_06_07_131437_create_region_law_produc
 INSERT INTO `migrations` VALUES (38, '2024_06_07_131551_create_mayor_law_products', 1);
 INSERT INTO `migrations` VALUES (39, '2025_08_07_154845_create_visits_table', 1);
 INSERT INTO `migrations` VALUES (40, '2025_08_24_160024_create_uptd_sectors_table', 1);
+INSERT INTO `migrations` VALUES (41, '2026_03_14_231443_create_notifications_table', 2);
+
+-- ----------------------------
+-- Table structure for notifications
+-- ----------------------------
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE `notifications`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pengumuman',
+  `category_label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `cat_class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'gold',
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '?',
+  `icon_bg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'rgba(200,168,75,0.12)',
+  `nomor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tanggal` date NULL DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of notifications
+-- ----------------------------
+INSERT INTO `notifications` VALUES (2, 'Peraturan Bupati No. 12 Tahun 2025 tentang Pengelolaan APBD', 'Telah ditetapkan Perbup terbaru terkait tata cara pengelolaan dan pertanggungjawaban APBD. Berlaku efektif mulai 1 April 2025. Seluruh OPD wajib menyesuaikan prosedur internal.', 'regulasi', 'Regulasi', 'info', '📋', '#EBF8FF', 'Perbup No. 12/2025', '2025-03-10', NULL, 1, 1, '2026-03-14 23:18:36', '2026-03-14 23:20:07');
+INSERT INTO `notifications` VALUES (3, 'BPKAD Raih WTP Ke-7 dari BPK RI Perwakilan Sumut', 'Kabupaten Serdang Bedagai kembali meraih opini Wajar Tanpa Pengecualian (WTP) dari Badan Pemeriksa Keuangan atas LKPD Tahun Anggaran 2024.', 'kegiatan', 'Kegiatan', 'success', '🏆', '#F0FFF4', 'LHP BPK No. 05/LHP/XVIII.MDN/2025', '2025-03-13', NULL, 1, 1, '2026-03-14 23:18:36', '2026-03-14 23:19:12');
+INSERT INTO `notifications` VALUES (4, 'Bimtek Sistem Informasi Keuangan Daerah (SIKD) Batch 2', 'Bimbingan teknis penggunaan aplikasi SIKD terbaru akan diselenggarakan pada 25 Maret 2025 di Aula Kantor Bupati. Peserta adalah operator keuangan dari masing-masing OPD.', 'kegiatan', 'Kegiatan', 'warning', '📅', '#FFFBEB', 'Undangan No. 005/BPKAD/2025', '2025-03-11', NULL, 1, 1, '2026-03-14 23:18:36', '2026-03-14 23:18:36');
 
 -- ----------------------------
 -- Table structure for online_applications
@@ -647,13 +678,20 @@ CREATE TABLE `visits`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of visits
 -- ----------------------------
 INSERT INTO `visits` VALUES (1, NULL, '127.0.0.1', '2026-02-24 11:33:14', '2026-02-24 11:33:14');
 INSERT INTO `visits` VALUES (2, NULL, '127.0.0.1', '2026-02-24 20:59:28', '2026-02-24 20:59:28');
+INSERT INTO `visits` VALUES (3, NULL, '127.0.0.1', '2026-02-25 13:03:28', '2026-02-25 13:03:28');
+INSERT INTO `visits` VALUES (4, NULL, '127.0.0.1', '2026-02-25 22:41:26', '2026-02-25 22:41:26');
+INSERT INTO `visits` VALUES (5, NULL, '127.0.0.1', '2026-03-08 22:09:34', '2026-03-08 22:09:34');
+INSERT INTO `visits` VALUES (6, NULL, '127.0.0.1', '2026-03-09 22:24:53', '2026-03-09 22:24:53');
+INSERT INTO `visits` VALUES (7, NULL, '127.0.0.1', '2026-03-12 20:40:30', '2026-03-12 20:40:30');
+INSERT INTO `visits` VALUES (8, NULL, '127.0.0.1', '2026-03-14 23:18:53', '2026-03-14 23:18:53');
+INSERT INTO `visits` VALUES (9, NULL, '127.0.0.1', '2026-03-15 12:16:30', '2026-03-15 12:16:30');
 
 -- ----------------------------
 -- Table structure for youtube_videos

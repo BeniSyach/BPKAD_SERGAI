@@ -15,7 +15,7 @@
         rel="stylesheet">
 
     <link href="{{ asset(mix('/css/app.css')) }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('logobpkad.png') }}">
 
     @yield('css')
     <style>
